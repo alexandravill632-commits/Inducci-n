@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Análisis de Evidencias - Ficha 3466323 | SENA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sena-verde: #39a900;
+  --sena-naranja: #ff6b00;
+  --texto: #1a1a2e;
+  --texto-dim: #4a5568;
+  --texto-dimmer: #718096;
+  --bg: #f8fafc;
+  --borde: #e2e8f0;
+  --acento-azul: #3b82f6;
+  --acento-purpura: #8b5cf6;
+  --alerta-amarillo: #f59e0b;
+  --alerta-rojo: #ef4444;
+  --exito-verde: #10b981;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family:'Inter',sans-serif;
+  color: var(--texto);
+  background: var(--bg);
+  line-height:1.6;
+  overflow-x:hidden;
+}
+
+.topbar {
+  position:sticky;
+  top:0;
+  z-index:100;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--borde);
+  padding:16px 32px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.topbar-left {
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+
+.sena-logo {
+  background: var(--sena-verde);
+  color:#fff;
+  font-weight:900;
+  font-size:18px;
+  padding:8px 16px;
+  border-radius:8px;
+  letter-spacing:1px;
+}
+
+.topbar-brand {
+  font-family:'Syne',sans-serif;
+  font-size:15px;
+  font-weight:700;
+  color: var(--texto);
+}
+
+.topbar-sub {
+  font-size:12px;
+  color: var(--texto-dim);
+  margin-top:2px;
+}
+
+.topbar-nav {
+  display:flex;
+  gap:20px;
+}
+
+.topbar-nav a {
+  text-decoration:none;
+  font-size:13px;
+  font-weight:600;
+  color: var(--texto-dimmer);
+  transition:color .25s;
+}
+
+.topbar-nav a:hover {
+  color: var(--sena-verde);
+}
+
+.slide {
+  min-height:100vh;
+  padding:80px 48px;
+  position:relative;
+  scroll-margin-top:64px;
+}
+
+.slide-inner {
+  max-width:1200px;
+  margin:0 auto;
+}
+
+.bg-glow {
+  position:absolute;
+  width:600px;
+  height:600px;
+  border-radius:50%;
+  filter:blur(120px);
+  opacity:0.3;
+  pointer-events:none;
+  z-index:0;
+}
+
+.bg-glow.g1 {
+  background: var(--sena-verde);
+  top:-200px;
+  left:-200px;
+}
+
+.bg-glow.g2 {
+  background: var(--sena-naranja);
+  bottom:-200px;
+  right:-200px;
+}
+
+.portada-sena-tag {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background: rgba(255,255,255,0.9);
+  border:1px solid var(--borde);
+  padding:10px 20px;
+  border-radius:30px;
+  font-size:12px;
+  font-weight:700;
+  color: var(--texto-dim);
+  letter-spacing:1.5px;
+  margin-bottom:32px;
+  position:relative;
+  z-index:1;
+}
+
+.portada-titulo {
+  font-family:'Syne',sans-serif;
+  font-size:clamp(32px, 5vw, 60px);
+  font-weight:800;
+  line-height:1.1;
+  margin-bottom:24px;
+  color: var(--texto);
+  position:relative;
+  z-index:1;
+}
+
+.portada-titulo .linea2 {
+  display:block;
+  background: linear-gradient(135deg, var(--sena-verde), var(--sena-naranja));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+
+.portada-desc {
+  font-size:clamp(16px, 2vw, 20px);
+  color: var(--texto-dim);
+  max-width:700px;
+  margin-bottom:32px;
+  position:relative;
+  z-index:1;
+  line-height:1.7;
+}
+
+.sec-header {
+  margin-bottom:48px;
+}
+
+.sec-tag {
+  display:inline-block;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  padding:8px 16px;
+  border-radius:20px;
+  margin-bottom:16px;
+}
+
+.sec-tag.verde { background: rgba(57,169,0,0.1); color: var(--sena-verde); }
+.sec-tag.naranja { background: rgba(255,107,0,0.1); color: var(--sena-naranja); }
+.sec-tag.azul { background: rgba(59,130,246,0.1); color: var(--acento-azul); }
+.sec-tag.rojo { background: rgba(239,68,68,0.1); color: var(--alerta-rojo); }
+
+.sec-titulo {
+  font-family:'Syne',sans-serif;
+  font-size:clamp(32px, 5vw, 48px);
+  font-weight:800;
+  line-height:1.2;
+  color: var(--texto);
+  margin-bottom:16px;
+}
+
+.sec-desc {
+  font-size:18px;
+  color: var(--texto-dim);
+  max-width:800px;
+  line-height:1.7;
+}
+
+.stats-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
+  gap:24px;
+  margin:40px 0;
+}
+
+.stat-card {
+  background:#fff;
+  border:2px solid var(--borde);
+  border-radius:20px;
+  padding:32px;
+  text-align:center;
+  transition:all .3s;
+  position:relative;
+  overflow:hidden;
+}
+
+.stat-card::before {
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:4px;
+  background: linear-gradient(90deg, var(--sena-verde), var(--sena-naranja));
+}
+
+.stat-card:hover {
+  transform:translateY(-4px);
+  box-shadow: 0 8px 24px rgba(57,169,0,0.15);
+  border-color: var(--sena-verde);
+}
+
+.stat-icon {
+  font-size:48px;
+  margin-bottom:16px;
+  display:block;
+}
+
+.stat-numero {
+  font-family:'Syne',sans-serif;
+  font-size:48px;
+  font-weight:800;
+  color: var(--sena-verde);
+  line-height:1;
+  margin-bottom:8px;
+}
+
+.stat-label {
+  font-size:16px;
+  font-weight:600;
+  color: var(--texto-dim);
+}
+
+.info-box {
+  background: rgba(59,130,246,0.05);
+  border-left:4px solid var(--acento-azul);
+  border-radius:12px;
+  padding:24px;
+  margin:24px 0;
+}
+
+.info-box.warning {
+  background: rgba(245,158,11,0.05);
+  border-left-color: var(--alerta-amarillo);
+}
+
+.info-box.danger {
+  background: rgba(239,68,68,0.05);
+  border-left-color: var(--alerta-rojo);
+}
+
+.info-box.success {
+  background: rgba(16,185,129,0.05);
+  border-left-color: var(--exito-verde);
+}
+
+.info-box p {
+  margin:0;
+  font-size:15px;
+  line-height:1.7;
+  color: var(--texto);
+}
+
+.info-box strong {
+  font-weight:700;
+  color: var(--texto);
+}
+
+.progress-container {
+  margin:32px 0;
+}
+
+.progress-item {
+  margin-bottom:24px;
+}
+
+.progress-header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:8px;
+}
+
+.progress-label {
+  font-size:15px;
+  font-weight:600;
+  color: var(--texto);
+}
+
+.progress-count {
+  font-size:14px;
+  font-weight:700;
+  color: var(--texto-dim);
+}
+
+.progress-bar-bg {
+  background: var(--borde);
+  border-radius:10px;
+  height:12px;
+  overflow:hidden;
+}
+
+.progress-bar-fill {
+  height:100%;
+  border-radius:10px;
+  transition:width 1s ease;
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  padding-right:8px;
+}
+
+.progress-bar-fill.excelente { background: var(--exito-verde); }
+.progress-bar-fill.bueno { background: var(--acento-azul); }
+.progress-bar-fill.aceptable { background: var(--sena-verde); }
+.progress-bar-fill.bajo { background: var(--alerta-amarillo); }
+.progress-bar-fill.critico { background: var(--alerta-rojo); }
+
+.student-table-container {
+  background:#fff;
+  border:2px solid var(--borde);
+  border-radius:20px;
+  padding:32px;
+  margin:32px 0;
+  overflow-x:auto;
+}
+
+.student-table {
+  width:100%;
+  border-collapse:collapse;
+  font-size:14px;
+}
+
+.student-table thead {
+  background: var(--bg);
+}
+
+.student-table th {
+  padding:16px 12px;
+  text-align:left;
+  font-weight:700;
+  color: var(--texto);
+  border-bottom:2px solid var(--borde);
+  white-space:nowrap;
+}
+
+.student-table td {
+  padding:12px;
+  border-bottom:1px solid var(--borde);
+}
+
+.student-table tbody tr:hover {
+  background: rgba(57,169,0,0.05);
+}
+
+.student-name {
+  font-weight:600;
+  color: var(--texto);
+}
+
+.student-email {
+  font-size:12px;
+  color: var(--texto-dimmer);
+}
+
+.badge-evidencias {
+  display:inline-block;
+  padding:4px 12px;
+  border-radius:12px;
+  font-size:13px;
+  font-weight:700;
+}
+
+.badge-excelente { background: rgba(16,185,129,0.1); color: var(--exito-verde); }
+.badge-bueno { background: rgba(59,130,246,0.1); color: var(--acento-azul); }
+.badge-aceptable { background: rgba(57,169,0,0.1); color: var(--sena-verde); }
+.badge-bajo { background: rgba(245,158,11,0.1); color: var(--alerta-amarillo); }
+.badge-critico { background: rgba(239,68,68,0.1); color: var(--alerta-rojo); }
+
+.detalle-estudiante {
+  display:none;
+  margin-top:16px;
+  padding:20px;
+  background: var(--bg);
+  border-radius:12px;
+}
+
+.detalle-estudiante.show {
+  display:block;
+}
+
+.btn-ver-detalle {
+  background: none;
+  border:none;
+  color: var(--sena-verde);
+  font-size:13px;
+  font-weight:600;
+  cursor:pointer;
+  padding:4px 8px;
+  border-radius:6px;
+  transition:background .2s;
+}
+
+.btn-ver-detalle:hover {
+  background: rgba(57,169,0,0.1);
+}
+
+footer {
+  background: var(--sena-verde);
+  text-align:center;
+  padding:32px 24px;
+  font-size:12px;
+  color: rgba(255,255,255,0.85);
+}
+
+footer span {
+  color:#fff;
+  font-weight:700;
+}
+
+.reveal {
+  opacity:0;
+  transform:translateY(30px);
+  transition:opacity .6s ease, transform .6s ease;
+}
+
+.reveal.in {
+  opacity:1;
+  transform:translateY(0);
+}
+
+@media (max-width: 768px) {
+  .slide { padding:60px 24px; }
+  .stats-grid { grid-template-columns:1fr; }
+  .topbar { flex-direction:column; align-items:flex-start; gap:16px; }
+  .topbar-nav { width:100%; overflow-x:auto; }
+}
+</style>
+</head>
+<body>
+
+<nav class="topbar">
+  <div class="topbar-left">
+    <div class="sena-logo">SENA</div>
+    <div>
+      <div class="topbar-brand">Análisis de Evidencias · Ficha 3466323</div>
+      <div class="topbar-sub">Fase: Inducción · 25 Abril 2026</div>
+    </div>
+  </div>
+  <div class="topbar-nav">
+    <a href="#inicio">Inicio</a>
+    <a href="#resumen">Resumen</a>
+    <a href="#rendimiento">Rendimiento</a>
+    <a href="#estudiantes">Estudiantes</a>
+    <a href="#conclusiones">Conclusiones</a>
+  </div>
+</nav>
+
+<div class="slide" id="inicio" style="min-height:100vh; display:flex; align-items:center;">
+  <div class="bg-glow g1"></div>
+  <div class="bg-glow g2"></div>
+  <div class="slide-inner">
+    <div class="portada-sena-tag">
+      📊 REPORTE ACTUALIZADO · FICHA 3466323 · FASE INDUCCIÓN
+    </div>
+    <h1 class="portada-titulo">
+      GESTIÓN DEL DESARROLLO<br>
+      <span class="linea2">ADMINISTRATIVO E INNOVACIÓN</span>
+    </h1>
+    <p class="portada-desc">
+      Informe consolidado del estado de entrega de las <strong>5 evidencias</strong> correspondientes a la fase de inducción del programa. Análisis de 55 aprendices.
+    </p>
+    <div style="position:relative; z-index:1;">
+      <div style="display:inline-flex; gap:16px; flex-wrap:wrap;">
+        <div style="background:rgba(57,169,0,0.1); padding:12px 20px; border-radius:12px; border:2px solid var(--sena-verde);">
+          <div style="font-size:11px; font-weight:700; color:var(--texto-dim); letter-spacing:1px;">PROGRAMA / FASE</div>
+          <div style="font-size:16px; font-weight:700; color:var(--sena-verde); margin-top:4px;">GESTIÓN DEL DESARROLLO ADMINISTRATIVO E INNOVACIÓN · INDUCCIÓN</div>
+        </div>
+        <div style="background:rgba(255,107,0,0.1); padding:12px 20px; border-radius:12px; border:2px solid var(--sena-naranja);">
+          <div style="font-size:11px; font-weight:700; color:var(--texto-dim); letter-spacing:1px;">FICHA</div>
+          <div style="font-size:16px; font-weight:700; color:var(--sena-naranja); margin-top:4px;">3466323</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="slide" id="resumen">
+  <div class="slide-inner">
+    <div class="sec-header reveal">
+      <div class="sec-tag azul">Panorama General</div>
+      <h2 class="sec-titulo">Resumen Ejecutivo</h2>
+      <p class="sec-desc">Métricas clave del estado actual de cumplimiento de la Ficha 3466323.</p>
+    </div>
+
+    <div class="stats-grid reveal">
+      <div class="stat-card">
+        <span class="stat-icon">👥</span>
+        <div class="stat-numero">55</div>
+        <div class="stat-label">Estudiantes</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-icon">📄</span>
+        <div class="stat-numero">5</div>
+        <div class="stat-label">Evidencias Totales</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-icon">⭐</span>
+        <div class="stat-numero">31</div>
+        <div class="stat-label">Aprobados (100%)</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-icon">❌</span>
+        <div class="stat-numero">24</div>
+        <div class="stat-label">Con Pendientes</div>
+      </div>
+    </div>
+
+    <div class="info-box success reveal">
+      <p><strong>🎉 DESEMPEÑO GRUPAL:</strong> El 56% del grupo (31 aprendices) cumplió exitosamente con la totalidad de los Resultados de Aprendizaje previstos para esta fase.</p>
+    </div>
+
+    <div class="info-box danger reveal">
+      <p><strong>⚠️ ALERTA ACADÉMICA:</strong> Existen 9 aprendices que no registran entrega de ninguna evidencia (0%), lo cual requiere atención y seguimiento inmediato.</p>
+    </div>
+  </div>
+</div>
+
+<div class="slide" id="rendimiento">
+  <div class="slide-inner">
+    <div class="sec-header reveal">
+      <div class="sec-tag azul">Análisis Estadístico</div>
+      <h2 class="sec-titulo">Rendimiento Estudiantil</h2>
+      <p class="sec-desc">Distribución de aprendices según el volumen de evidencias entregadas exitosamente.</p>
+    </div>
+
+    <div class="progress-container reveal">
+      <div class="progress-item">
+        <div class="progress-header">
+          <div class="progress-label">🏆 Excelente (5/5)</div>
+          <div class="progress-count">31 estudiantes</div>
+        </div>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill excelente" style="width:56.4%;"></div>
+        </div>
+      </div>
+
+      <div class="progress-item">
+        <div class="progress-header">
+          <div class="progress-label">⭐ Bueno (4/5)</div>
+          <div class="progress-count">9 estudiantes</div>
+        </div>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill bueno" style="width:16.4%;"></div>
+        </div>
+      </div>
+
+      <div class="progress-item">
+        <div class="progress-header">
+          <div class="progress-label">✅ Aceptable (3/5)</div>
+          <div class="progress-count">3 estudiantes</div>
+        </div>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill aceptable" style="width:5.5%;"></div>
+        </div>
+      </div>
+
+      <div class="progress-item">
+        <div class="progress-header">
+          <div class="progress-label">🔻 Bajo (1/5 - 2/5)</div>
+          <div class="progress-count">3 estudiantes</div>
+        </div>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill bajo" style="width:5.5%;"></div>
+        </div>
+      </div>
+
+      <div class="progress-item">
+        <div class="progress-header">
+          <div class="progress-label">❌ Crítico (0/5)</div>
+          <div class="progress-count">9 estudiantes</div>
+        </div>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill critico" style="width:16.4%;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="slide" id="estudiantes">
+  <div class="slide-inner">
+    <div class="sec-header reveal">
+      <div class="sec-tag verde">Detalle Individual</div>
+      <h2 class="sec-titulo">Listado Completo de Aprendices</h2>
+      <p class="sec-desc">Estado de entrega de evidencias por cada aprendiz. Haz clic en "Ver detalle" para expandir las actividades correspondientes a la codificación.</p>
+    </div>
+
+    <div class="student-table-container reveal" id="tablaEstudiantes">
+      <div style="margin-bottom:16px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
+        <h3 style="font-family:'Syne',sans-serif; font-size:20px; font-weight:700; color:var(--texto); margin:0;">55 Estudiantes</h3>
+        <input type="text" id="searchStudent" placeholder="🔍 Buscar estudiante..." style="padding:10px 16px; border:2px solid var(--borde); border-radius:8px; font-size:14px; width:300px; max-width:100%;">
+      </div>
+      <table class="student-table">
+        <thead>
+          <tr>
+            <th style="width:50px;">#</th>
+            <th>Estudiante</th>
+            <th style="text-align:center;">Evidencias</th>
+            <th style="text-align:center;">%</th>
+            <th style="text-align:center; width:120px;">Acción</th>
+          </tr>
+        </thead>
+        <tbody id="studentTableBody">
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="slide" id="conclusiones" style="min-height:100vh; display:flex; align-items:center;">
+  <div class="slide-inner">
+    <div style="background:linear-gradient(135deg, var(--sena-verde), #2d7a00); border-radius:24px; padding:64px; text-align:center; color:#fff;">
+      <div style="font-size:80px; margin-bottom:24px;">🎯</div>
+      <h2 style="font-family:'Syne',sans-serif; font-size:48px; font-weight:800; margin-bottom:24px;">Conclusiones</h2>
+      
+      <div style="background:rgba(255,255,255,0.15); backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,0.2); border-radius:20px; padding:32px; margin-top:48px; text-align:left; max-width:900px; margin-left:auto; margin-right:auto;">
+        <h3 style="font-size:24px; font-weight:700; margin-bottom:20px; text-align:center;">📊 Balance de la Fase Inducción</h3>
+        <ul style="list-style:none; padding:0; margin:0;">
+          <li style="padding:16px 0; border-bottom:1px solid rgba(255,255,255,0.2); display:flex; gap:12px; align-items:flex-start;">
+            <span style="flex-shrink:0;">🎉</span>
+            <span><strong>Aprobación:</strong> El 56.4% de la ficha ha completado sus resultados de aprendizaje a cabalidad, validando la transición exitosa.</span>
+          </li>
+          <li style="padding:16px 0; border-bottom:1px solid rgba(255,255,255,0.2); display:flex; gap:12px; align-items:flex-start;">
+            <span style="flex-shrink:0;">⚠️</span>
+            <span><strong>Riesgos Académicos:</strong> Se identifica un bloque crítico de aprendices (16.4%) sin ninguna entrega registrada.</span>
+          </li>
+          <li style="padding:16px 0; display:flex; gap:12px; align-items:flex-start;">
+            <span style="flex-shrink:0;">⚖️</span>
+            <span><strong>Planes de Mejoramiento:</strong> Se requiere implementar notificaciones formales de alerta para los 24 aprendices con evidencias pendientes.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>Reporte <span>ANÁLISIS DE EVIDENCIAS</span></p>
+  <p>Programa <span>Gestión del Desarrollo Administrativo e Innovación</span> · Ficha <span>3466323</span></p>
+  <p>Instructora: <span>Edna Alexandra Villanueva Valdes</span> · SENA · 25 Abril 2026</p>
+</footer>
+
+<script>
+const estudiantes = [
+  {"nombre": "ADRIANA PAOLA HERNANDEZ ARCE", "apellido": "", "evidencias": ["A", "A", "A", "A", "A"], "total": 5, "porcentaje": 100},
+  {"nombre": "ALISON BRIGGETH QUIÑONES SANCHEZ", "apellido": "", "evidencias": ["A", "A", "A", "A", "A"], "total": 5, "porcentaje": 100},
+  {"nombre": "ANDREA MARCELA SARMIENTO VIEDA", "apellido": "", "evidencias": ["A", "A", "A", "A", "A"], "total": 5, "porcentaje": 100},
+  {"nombre": "ANGELICA MARIA ORREGO FRANCO", "apellido": "", "evidencias": ["A", "A", "A", "A", "A"], "total": 5, "porcentaje": 100},
+  {"nombre": "ANGI DANIELA GALEANO DIAZ", "apellido": "", "evidencias": ["A", "A", "A", "A", "A"], "total": 5, "porcentaje": 100},
+  {"nombre": "ANYIS PAOLA QUIROZ PEREZ", "apellido": "", "evidencias": ["A", "A", "A", "A", "A"], "total": 5, "porcentaje": 100},
+  {"nombre": "BRANDON DUVAN GONZALEZ RODRIGUEZ", "apellido": "", "evidencias": ["A", "A", "A", "A", "A"], "total": 5, "porcentaje": 100},
+  {"nombre": "CHRISTIAN CAMILO GIRALDO RODRIGUEZ", "apellido": "", "evidencias": ["A", "A", "A", "A", "A"], "total": 5, "porcentaje": 100},
+  {"nombre": "DANIEL FELIPE GARCIA BENITEZ", "apellido": "", "evidencias": ["A", "A", "A", "A", "A"], "total": 5, "porcentaje": 100},
+  {"nombre": "ERIKA ANDREA RUSINQUE RUSINQUE", "apellido": "", "evidencias": ["A", "A", "A", "A", "A"], "total": 5, "porcentaje": 100},
+  {"nombre": "FABIAN ARMANDO OSORIO ROCA", "apellido": "", "evidencias": ["A", "A", "A", "A", "A"], "total": 5, "porcentaje": 100},
+  {"nombre": "GINA ALEXANDRA VARGAS CARDOZO", "apellido": "", "evidencias": ["A", "A", "A", "A", "A"], "total": 5, "porcentaje": 100},
+  {"nombre": "JACQUELINE GOMEZ RODRIGUEZ", "apellido": "", "evidencias": ["A", "A", "A", "A", "A"], "total": 5, "porcentaje": 100},
+  {"nombre": "JEFFERSON HERNAN ROJAS HERNANDEZ", "apellido": "", "evidencias": ["A", "A", "A", "A", "A"], "total": 5, "porcentaje": 100},
+  {"nombre": "KAREN DANIELA ARENAS GUTIERREZ", "apellido": "", "evidencias": ["A", "A", "A", "A", "A"], "total": 5, "porcentaje": 100},
+  {"nombre": "KAREN LORENA BOTELLO RUBIANO", "apellido": "", "evidencias": ["A", "A", "A", "A", "A"], "total": 5, "porcentaje": 100},
+  {"nombre": "KELLY XIOMARA PUNGO BERMUDEZ", "apellido": "", "evidencias": ["A", "A", "A", "A", "A"], "total": 5, "porcentaje": 100},
+  {"nombre": "LEYDI XIOMARA REY CASTIBLANCO", "apellido": "", "evidencias": ["A", "A", "A", "A", "A"], "total": 5, "porcentaje": 100},
+  {"nombre": "MAGALY MORALES GONZALEZ", "apellido": "", "evidencias": ["A", "A", "A", "A", "A"], "total": 5, "porcentaje": 100},
+  {"nombre": "MAGDY JURANY PULIDO SARMIENTO", "apellido": "", "evidencias": ["A", "A", "A", "A", "A"], "total": 5, "porcentaje": 100},
+  {"nombre": "MANUEL ALEJANDRO HIGUITA SEPULVEDA", "apellido": "", "evidencias": ["A", "A", "A", "A", "A"], "total": 5, "porcentaje": 100},
+  {"nombre": "MARCELA FAURA", "apellido": "", "evidencias": ["A", "A", "A", "A", "A"], "total": 5, "porcentaje": 100},
+  {"nombre": "MARIA ALEJANDRA VELANDIA SIERRA", "apellido": "", "evidencias": ["A", "A", "A", "A", "A"], "total": 5, "porcentaje": 100},
+  {"nombre": "MARTHA LILIANA TORRES LARA", "apellido": "", "evidencias": ["A", "A", "A", "A", "A"], "total": 5, "porcentaje": 100},
+  {"nombre": "MELISSA ANDREA BOHORQUEZ GUERRERO", "apellido": "", "evidencias": ["A", "A", "A", "A", "A"], "total": 5, "porcentaje": 100},
+  {"nombre": "NAYELIS ANDREA RUEDA MOLINA", "apellido": "", "evidencias": ["A", "A", "A", "A", "A"], "total": 5, "porcentaje": 100},
+  {"nombre": "SANDRA MILENA LANCHEROS MONTEJO", "apellido": "", "evidencias": ["A", "A", "A", "A", "A"], "total": 5, "porcentaje": 100},
+  {"nombre": "TANIA YICELLI ACEVEDO OSPINA", "apellido": "", "evidencias": ["A", "A", "A", "A", "A"], "total": 5, "porcentaje": 100},
+  {"nombre": "VIVIANA CRUZ RAMIREZ", "apellido": "", "evidencias": ["A", "A", "A", "A", "A"], "total": 5, "porcentaje": 100},
+  {"nombre": "XIOMARA MONTOYA BERRIO", "apellido": "", "evidencias": ["A", "A", "A", "A", "A"], "total": 5, "porcentaje": 100},
+  {"nombre": "YOHANELYS CARINA JAIMES CASTILLO", "apellido": "", "evidencias": ["A", "A", "A", "A", "A"], "total": 5, "porcentaje": 100},
+
+  {"nombre": "DIEGO ANDRES PINEDA CORREA", "apellido": "", "evidencias": ["A", "A", "A", "A", "-"], "total": 4, "porcentaje": 80},
+  {"nombre": "JAQUELINE MARULANDA TORO", "apellido": "", "evidencias": ["A", "A", "A", "-", "A"], "total": 4, "porcentaje": 80},
+  {"nombre": "JULIETH ESTEFANY CASTRO GONZALEZ", "apellido": "", "evidencias": ["A", "-", "A", "A", "A"], "total": 4, "porcentaje": 80},
+  {"nombre": "LAURA CRISTINA TROYA OJEDA", "apellido": "", "evidencias": ["-", "A", "A", "A", "A"], "total": 4, "porcentaje": 80},
+  {"nombre": "MARIA CAMILA MEZA LARGACHA", "apellido": "", "evidencias": ["A", "-", "A", "A", "A"], "total": 4, "porcentaje": 80},
+  {"nombre": "MARYSOL JULIO BATISTA", "apellido": "", "evidencias": ["A", "A", "-", "A", "A"], "total": 4, "porcentaje": 80},
+  {"nombre": "WILMAR LEON CHITIVA", "apellido": "", "evidencias": ["A", "A", "A", "A", "-"], "total": 4, "porcentaje": 80},
+  {"nombre": "YEIMY CAROLINA ARIAS MIRANDA", "apellido": "", "evidencias": ["A", "A", "A", "A", "-"], "total": 4, "porcentaje": 80},
+  {"nombre": "YURI ALEXANDER HENAO SANCHEZ", "apellido": "", "evidencias": ["A", "A", "A", "A", "-"], "total": 4, "porcentaje": 80},
+
+  {"nombre": "DARCY ESTEFANIA BURGOS GUZMAN", "apellido": "", "evidencias": ["A", "A", "A", "-", "-"], "total": 3, "porcentaje": 60},
+  {"nombre": "MARIA DEL CARMEN VILLALOBOS PATIÑO", "apellido": "", "evidencias": ["A", "A", "A", "-", "-"], "total": 3, "porcentaje": 60},
+  {"nombre": "YURLEY ANPUDIA MACHADO", "apellido": "", "evidencias": ["A", "A", "A", "-", "-"], "total": 3, "porcentaje": 60},
+
+  {"nombre": "ANDRES MAURICIO MURILLO OSPITIA", "apellido": "", "evidencias": ["A", "A", "-", "-", "-"], "total": 2, "porcentaje": 40},
+  {"nombre": "LEDY MERCEDEZ MANTILLA GONZALEZ", "apellido": "", "evidencias": ["A", "-", "A", "-", "-"], "total": 2, "porcentaje": 40},
+
+  {"nombre": "JUAN ESTEBAN SANCHEZ JIMENEZ", "apellido": "", "evidencias": ["A", "-", "-", "-", "-"], "total": 1, "porcentaje": 20},
+
+  {"nombre": "ALEJANDRA HERRERA VASQUEZ", "apellido": "", "evidencias": ["-", "-", "-", "-", "-"], "total": 0, "porcentaje": 0},
+  {"nombre": "ANGY LICETH ESCOBAR ARIAS", "apellido": "", "evidencias": ["-", "-", "-", "-", "-"], "total": 0, "porcentaje": 0},
+  {"nombre": "DAYANA HENAO VALENCIA", "apellido": "", "evidencias": ["-", "-", "-", "-", "-"], "total": 0, "porcentaje": 0},
+  {"nombre": "DIANA CAROLINA USME ARIZA", "apellido": "", "evidencias": ["-", "-", "-", "-", "-"], "total": 0, "porcentaje": 0},
+  {"nombre": "DIANA PAOLA BERNAL ROMERO", "apellido": "", "evidencias": ["-", "-", "-", "-", "-"], "total": 0, "porcentaje": 0},
+  {"nombre": "JONNY ANDRES ALVAREZ VILLEGAS", "apellido": "", "evidencias": ["-", "-", "-", "-", "-"], "total": 0, "porcentaje": 0},
+  {"nombre": "KAREN TATIANA ORTIZ ACOSTA", "apellido": "", "evidencias": ["-", "-", "-", "-", "-"], "total": 0, "porcentaje": 0},
+  {"nombre": "RAQUEL ORTIZ SEPULVEDA", "apellido": "", "evidencias": ["-", "-", "-", "-", "-"], "total": 0, "porcentaje": 0},
+  {"nombre": "STIVEL ALEJANDRO CASTELBLANCO JARA", "apellido": "", "evidencias": ["-", "-", "-", "-", "-"], "total": 0, "porcentaje": 0}
+];
+
+const nombresEvidencias = [
+  "Evidencia:Infografía. AA1-EV01", 
+  "Foro:Foro temático. AA2-EV01", 
+  "Evidencia:Crucigrama. AA3-EV01", 
+  "Evidencia:Cuadro sinóptico. AA4-EV01", 
+  "Evidencia:Taller. AA4-EV02"
+];
+
+function getBadgeClass(total) {
+  if (total === 5) return 'badge-excelente';
+  if (total === 4) return 'badge-bueno';
+  if (total === 3) return 'badge-aceptable';
+  if (total > 0 && total < 3) return 'badge-bajo';
+  return 'badge-critico';
+}
+
+function renderStudentTable() {
+  const tbody = document.getElementById('studentTableBody');
+  tbody.innerHTML = '';
+  
+  estudiantes.forEach((est, idx) => {
+    const badgeClass = getBadgeClass(est.total);
+    const nombreCompleto = `${est.nombre} ${est.apellido}`;
+    
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td style="text-align:center; font-weight:600; color:var(--texto-dimmer);">${idx + 1}</td>
+      <td>
+        <div class="student-name">${nombreCompleto}</div>
+      </td>
+      <td style="text-align:center;">
+        <span class="badge-evidencias ${badgeClass}">${est.total}/5</span>
+      </td>
+      <td style="text-align:center; font-weight:700; color:var(--texto);">${est.porcentaje}%</td>
+      <td style="text-align:center;">
+        <button class="btn-ver-detalle" onclick="toggleDetalle(${idx})">Ver detalle</button>
+      </td>
+    `;
+    
+    tbody.appendChild(tr);
+    
+    const trDetalle = document.createElement('tr');
+    trDetalle.id = `detalle-${idx}`;
+    trDetalle.innerHTML = `
+      <td colspan="5">
+        <div class="detalle-estudiante" id="detalle-content-${idx}">
+          <h4 style="font-size:16px; font-weight:700; margin-bottom:16px;">Codificación de las evidencias</h4>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:12px;">
+            ${est.evidencias.map((ev, evIdx) => `
+              <div style="display:flex; align-items:center; gap:8px; font-size:13px;">
+                <span style="font-size:16px;">${ev === 'A' ? '✅' : '❌'}</span>
+                <span style="color:var(--texto-dim); font-weight:600;">${nombresEvidencias[evIdx]}</span>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      </td>
+    `;
+    tbody.appendChild(trDetalle);
+  });
+}
+
+function toggleDetalle(idx) {
+  const detalle = document.getElementById(`detalle-content-${idx}`);
+  detalle.classList.toggle('show');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderStudentTable();
+  
+  const searchInput = document.getElementById('searchStudent');
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      const query = e.target.value.toLowerCase();
+      const rows = document.querySelectorAll('#studentTableBody tr');
+      
+      rows.forEach(row => {
+        const text = row.textContent.toLowerCase();
+        row.style.display = text.includes(query) ? '' : 'none';
+      });
+    });
+  }
+});
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+</body>
+</html>
